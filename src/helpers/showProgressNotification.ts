@@ -1,6 +1,9 @@
 import { ProgressLocation, window } from 'vscode'
 
-export async function showProgressNotification<T>(message: string, cb: () => Promise<T>): Promise<T> {
+export default async function showProgressNotification<T>(
+  message: string,
+  cb: () => Promise<T>,
+): Promise<T> {
   let res: T
 
   await window.withProgress(
