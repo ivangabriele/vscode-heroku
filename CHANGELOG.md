@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.0.1] - 2018-10-31
 
 ### Fixed
-- Attempt to fix .vscodeignore
+- Fix .vscodeignore related issue.
 
 ## [1.0.0] - 2018-10-31
 
