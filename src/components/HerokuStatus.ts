@@ -1,8 +1,13 @@
-import { StatusBarAlignment, StatusBarItem, window } from 'vscode'
+import to from 'await-to-js'
 import { sync as commandExistsSync } from 'command-exists'
+import { StatusBarAlignment, StatusBarItem, window, workspace } from 'vscode'
+
+import exec from '../helpers/exec'
+
+import { Status, StatusContent } from './HerokuStatus.d'
 
 // Icons: https://octicons.github.com
-const STATUS = {
+const STATUS: Status = {
   FAILED: {
     icon: 'circle-slash',
     message: 'Heroku',
@@ -32,19 +37,34 @@ const STATUS = {
 
 export default class HerokuStatus {
   private statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left)
+  private workspaceDirectoryPath: string = workspace.workspaceFolders[0].uri.fsPath
 
   constructor() {
-    if (commandExistsSync('heroku')) {
-      this.setStatusTo(STATUS.SYNCING)
-    } else {
+    if (!commandExistsSync('heroku')) {
       this.setStatusTo(STATUS.UNAVAILABLE)
+      this.statusBarItem.show()
+
+      return
     }
 
-    this.statusBarItem.show()
+    this.start()
   }
 
-  private setStatusTo(status) {
+  private async start(): Promise<void> {
+    if (await this.isWorkspaceLinkedToHeroku()) {
+      this.setStatusTo(STATUS.SYNCING)
+      this.statusBarItem.show()
+    }
+  }
+
+  private setStatusTo(status: StatusContent): void {
     this.statusBarItem.text = `$(${status.icon}) ${status.message}`
     this.statusBarItem.tooltip = status.tooltip
+  }
+
+  private async isWorkspaceLinkedToHeroku(): Promise<boolean> {
+    const [err] = await to(exec('heroku', ['info'], { cwd: this.workspaceDirectoryPath }))
+
+    return err === null
   }
 }
