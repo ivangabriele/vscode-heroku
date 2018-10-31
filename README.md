@@ -1,7 +1,5 @@
 # Heroku Extension for Visual Studio Code
 
-- **Check your project's Heroku deployment status.**
-
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/ivangabriele.vscode-heroku.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=ivangabriele.vscode-heroku)
 [![Travis](https://img.shields.io/travis/ivangabriele/vscode-heroku.svg?style=flat-square)](https://travis-ci.org/ivangabriele/vscode-heroku)
@@ -9,6 +7,10 @@
 [![David](https://img.shields.io/david/dev/ivangabriele/vscode-heroku.svg?style=flat-square)](https://david-dm.org/ivangabriele/vscode-heroku?type=dev)
 
 ---
+
+## Description
+
+- **Check your project's Heroku deployment status.**
 
 ## Requirements
 
