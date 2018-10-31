@@ -20,7 +20,8 @@
     "watch": "tsc -watch -p ./"
   },
   "dependencies": {
-    "command-exists": "^1.2.8"
+    "command-exists": "^1.2.8",
+    "exec-sh": "^0.3.2"
   },
   "devDependencies": {
     "@types/node": "^10.12.1",
