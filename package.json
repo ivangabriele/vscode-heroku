@@ -1,0 +1,53 @@
+{
+  "name": "vscode-heroku",
+  "version": "0.0.0",
+  "displayName": "Heroku",
+  "description": "Check your project's Heroku deployment status.",
+  "main": "./out/extension",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.28.2"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "scripts": {
+    "compile": "tsc -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "preversion": "npm run compile",
+    "vscode:prepublish": "npm run compile",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^10.12.1",
+    "typescript": "^3.1.4",
+    "vscode": "^1.1.21"
+  },
+  "author": {
+    "name": "Ivan Gabriele",
+    "email": "ivan.gabriele@gmail.com",
+    "url": "https://www.ivangabriele.com"
+  },
+  "publisher": "ivangabriele",
+  "icon": "res/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "addon",
+    "extension",
+    "git",
+    "shortcut",
+    "vscode"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivangabriele/vscode-heroku.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivangabriele/vscode-heroku/issues"
+  },
+  "homepage": "https://github.com/ivangabriele/vscode-heroku#readme"
+}
