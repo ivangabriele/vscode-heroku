@@ -11,6 +11,14 @@
   "activationEvents": [
     "*"
   ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.vscode-heroku.linkWorkspace",
+        "title": "Link the current workspace to an existing Heroku app."
+      }
+    ]
+  },
   "scripts": {
     "compile": "tsc -p ./",
     "postinstall": "node ./node_modules/vscode/bin/install",
