@@ -1,6 +1,6 @@
 import * as childProcess from 'child_process'
 
-export default async function (command: string, args: string[]): Promise<any> {
+export default async function (command: string, args: string[] = []): Promise<any> {
   console.log(`Running: ${command} ${args.join(' ')}`)
 
   return new Promise((resolve, reject) => {
