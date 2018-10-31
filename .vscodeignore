@@ -1,0 +1,13 @@
+*
+*/**
+**/.DS_Store
+
+!out/*.js
+!out/**/*.js
+
+!CHANGELOG.md
+!LICENSE
+!README.md
+!package.json
+!package-lock.json
+!res/icon.png
