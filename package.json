@@ -17,6 +17,7 @@
     "test": "npm run compile && node ./node_modules/vscode/bin/test",
     "preversion": "npm run compile",
     "vscode:prepublish": "npm run compile",
+    "vscode:postpublish": "git push origin HEAD & git push --tags",
     "watch": "tsc -watch -p ./"
   },
   "dependencies": {
