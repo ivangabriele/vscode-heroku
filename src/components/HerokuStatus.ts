@@ -1,5 +1,6 @@
 import to from 'await-to-js'
 import { sync as commandExistsSync } from 'command-exists'
+import * as moment from 'moment'
 import { StatusBarAlignment, StatusBarItem, window, workspace } from 'vscode'
 
 import exec from '../helpers/exec'
@@ -48,8 +49,9 @@ const STATUS: Status = {
 const LOOP_DELAY: number = 5_000
 
 export default class HerokuStatus {
-  private statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left)
   private cwd: string = workspace.workspaceFolders[0].uri.fsPath
+  private lastMessage: string
+  private statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left)
 
   constructor() {
     if (!commandExistsSync('heroku')) {
@@ -70,8 +72,14 @@ export default class HerokuStatus {
     await this.checkHerokuDeployments()
   }
 
-  private setStatusTo(status: StatusContent, version: number = 0): void {
-    this.statusBarItem.text = `$(${status.icon}) ${status.message}${version !== 0 ? ' v' + String(version) : ''}`
+  private setStatusTo(status: StatusContent, version: number = 0, date: string = ''): void {
+    let message: string = `$(${status.icon}) ${status.message}`
+    if (version !== 0) message += ` v${version}`
+    if (date !== '') message += ` (${moment(date).fromNow()})`
+
+    if (message === this.lastMessage) return
+
+    this.statusBarItem.text = message
     this.statusBarItem.tooltip = status.tooltip
   }
 
@@ -95,20 +103,20 @@ export default class HerokuStatus {
     }
 
     if (herokuReleases[0].status === 'pending') {
-      this.setStatusTo(STATUS.PENDING, herokuReleases[0].version)
+      this.setStatusTo(STATUS.PENDING, herokuReleases[0].version, herokuReleases[0].created_at)
       setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY)
 
       return
     }
 
     if (herokuReleases[0].status === 'succeeded') {
-      this.setStatusTo(STATUS.SUCCESSFUL, herokuReleases[0].version)
+      this.setStatusTo(STATUS.SUCCESSFUL, herokuReleases[0].version, herokuReleases[0].created_at)
       setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY)
 
       return
     }
 
-    this.setStatusTo(STATUS.FAILED, herokuReleases[0].version)
+    this.setStatusTo(STATUS.FAILED, herokuReleases[0].version, herokuReleases[0].created_at)
     setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY)
   }
 
