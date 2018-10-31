@@ -15,7 +15,7 @@ export interface HerokuRelease {
   }
   created_at: string
   description: string
-  status: string
+  status: 'failed' | 'pending' | 'succeeded'
   id: string
   slug: {
     id: string
