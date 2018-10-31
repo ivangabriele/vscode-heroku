@@ -22,7 +22,6 @@
   "dependencies": {
     "await-to-js": "^2.0.1",
     "command-exists": "^1.2.8",
-    "exec-sh": "^0.3.2",
     "moment": "^2.22.2"
   },
   "devDependencies": {
