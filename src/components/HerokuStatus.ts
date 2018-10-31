@@ -79,6 +79,7 @@ export default class HerokuStatus {
 
     if (message === this.lastMessage) return
 
+    this.lastMessage = message
     this.statusBarItem.text = message
     this.statusBarItem.tooltip = status.tooltip
   }
