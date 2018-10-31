@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="30"
+   height="30"
+   viewBox="0 0 30 30"
+   version="1.1"
+   id="svg6"
+   sodipodi:docname="icon.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata12">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>heroku-logo</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="855"
+     id="namedview8"
+     showgrid="false"
+     inkscape:zoom="7.8666667"
+     inkscape:cx="18.584746"
+     inkscape:cy="4.8305085"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg6" />
+  <title
+     id="title2">heroku-logo</title>
+  <path
+     d="m 4.5,0 c -1.87,0 -3,1.11 -3,2.903 V 27.097 C 1.5,28.883 2.63,30 4.5,30 h 21 c 1.863,0 3,-1.11 3,-2.903 V 2.903 C 28.494,1.11 27.363,0 25.5,0 Z M 25.542,2 C 26.05,2.006 26.5,2.448 26.5,2.929 V 27.07 c 0,0.487 -0.45,0.929 -0.958,0.929 H 4.458 C 3.95,28 3.5,27.558 3.5,27.071 V 2.93 C 3.5,2.442 3.95,2 4.458,2 Z M 21.5,25 h -2.781 v -8.506 c 0,-0.774 -0.237,-1.048 -0.468,-1.208 -1.396,-0.959 -5.414,-0.042 -7.834,0.916 L 8.5,17.012 8.506,5 h 2.816 v 7.917 a 20.99,20.99 0 0 1 1.882,-0.482 c 2.988,-0.643 5.184,-0.47 6.616,0.505 0.787,0.536 1.68,1.59 1.68,3.554 z m -6,-15 h 3.293 A 16.109,16.109 0 0 0 21.5,5 h -3.287 c -0.49,1.188 -1.385,3.188 -2.713,5 z m -7,15 v -7 l 3,3.5 z"
+     id="path4"
+     inkscape:connector-curvature="0"
+     style="fill:#9e7cc1;fill-rule:evenodd" />
+</svg>
