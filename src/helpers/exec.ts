@@ -1,13 +1,17 @@
-import * as childProcess from 'child_process'
+import { spawn, SpawnOptions } from 'child_process'
 
-export default async function (command: string, args: string[] = []): Promise<any> {
+export default async function (
+  command: string,
+  args: string[] = [],
+  options: SpawnOptions = {},
+): Promise<any> {
   console.log(`Running: ${command} ${args.join(' ')}`)
 
   return new Promise((resolve, reject) => {
     let res, stderr = '', stdout = ''
 
     try {
-      const batch = childProcess.spawn(command, args)
+      const batch = spawn(command, args, options)
 
       batch.stdout.on('data', function (data) {
         stdout += data.toString()
