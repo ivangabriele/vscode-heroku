@@ -19,7 +19,9 @@
     "vscode:prepublish": "npm run compile",
     "watch": "tsc -watch -p ./"
   },
-  "dependencies": {},
+  "dependencies": {
+    "command-exists": "^1.2.8"
+  },
   "devDependencies": {
     "@types/node": "^10.12.1",
     "typescript": "^3.1.4",
