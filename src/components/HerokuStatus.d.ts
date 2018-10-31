@@ -1,7 +1,7 @@
 export interface Status {
   [key: string]: StatusContent
 }
-interface StatusContent {
+export interface StatusContent {
   icon: string
   message: string
   tooltip: string
