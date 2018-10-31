@@ -6,3 +6,26 @@ export interface StatusContent {
   message: string
   tooltip: string
 }
+
+export interface HerokuRelease {
+  addon_plan_names: string[]
+  app: {
+    id: string
+    name: string
+  }
+  created_at: string
+  description: string
+  status: string
+  id: string
+  slug: {
+    id: string
+  }
+  updated_at: string
+  user: {
+    email: string
+    id: string
+  }
+  version: number
+  current: boolean
+  output_stream_url: string | null
+}
