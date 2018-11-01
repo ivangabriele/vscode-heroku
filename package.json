@@ -15,7 +15,7 @@
     "commands": [
       {
         "command": "extension.vscode-heroku.linkWorkspace",
-        "title": "Heroku: Link the current workspace to an existing Heroku app."
+        "title": "Heroku: Link the current workspace to an existing Heroku app"
       }
     ]
   },
