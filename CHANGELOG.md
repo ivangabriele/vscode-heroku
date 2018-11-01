@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.3.0] - 2018-11-01
 
+## Added
+- Test setup
+- Simple helpers/exec() test
+
 ### Changed
 - Lower status loop delay to 2.5s.
 
