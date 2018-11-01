@@ -5,6 +5,7 @@
 [![Travis](https://img.shields.io/travis/ivangabriele/vscode-heroku.svg?style=flat-square)](https://travis-ci.org/ivangabriele/vscode-heroku)
 [![David](https://img.shields.io/david/ivangabriele/vscode-heroku.svg?style=flat-square)](https://david-dm.org/ivangabriele/vscode-heroku?type=dev)
 [![David](https://img.shields.io/david/dev/ivangabriele/vscode-heroku.svg?style=flat-square)](https://david-dm.org/ivangabriele/vscode-heroku?type=dev)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku?ref=badge_shield)
 
 ---
 
@@ -48,3 +49,7 @@ To be able to contribute to TFS development, you need to be at ease with **Types
 - [Heroku extension on Github](https://github.com/ivangabriele/vscode-heroku)
 - [Heroku extension on Visual Studio Market Place](https://marketplace.visualstudio.com/items/ivangabriele.vscode-heroku)
 - [MIT Licence](https://github.com/ivangabriele/vscode-heroku/blob/master/LICENSE)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku?ref=badge_large)
