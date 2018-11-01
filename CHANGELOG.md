@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [1.1.0] - 2018-10-31
 
+### Added
+- Command to link the current workspace with an existing Heroku application.
+
 ### Changed
 - Cache status message.
 
