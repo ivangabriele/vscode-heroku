@@ -53,7 +53,7 @@ const STATUS: Status = {
   },
 }
 
-const LOOP_DELAY: number = 5_000
+const LOOP_DELAY: number = 2_500
 
 export default class HerokuStatus {
   private cwd: string = workspace.workspaceFolders[0].uri.fsPath
