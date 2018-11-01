@@ -43,8 +43,12 @@ To be able to contribute to TFS development, you need to be at ease with **Types
     cd vscode-heroku
     npm install
 
-#### Links
+## Links
 
 - [Heroku extension on Github](https://github.com/ivangabriele/vscode-heroku)
 - [Heroku extension on Visual Studio Market Place](https://marketplace.visualstudio.com/items/ivangabriele.vscode-heroku)
 - [MIT Licence](https://github.com/ivangabriele/vscode-heroku/blob/master/LICENSE)
+
+## Licenses
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku?ref=badge_large)
