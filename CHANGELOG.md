@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 - Missing readme update.
+- Auto-push when bumping version.
 
 ## [1.1.0] - 2018-11-01
 
