@@ -10,36 +10,43 @@ import { HerokuRelease, Status, StatusContent } from './HerokuStatus.d'
 // Icons: https://octicons.github.com
 const STATUS: Status = {
   ERROR: {
+    name: 'Error',
     icon: 'alert',
     message: 'Heroku went wrong.',
     tooltip: `Sorry but something went wrong while checking Heroku status.`,
   },
   FAILED: {
+    name: 'Failed',
     icon: 'alert',
     message: 'Heroku',
     tooltip: `The last Heroku deployment failed.`,
   },
   NONE: {
+    name: 'None',
     icon: 'circle-slash',
     message: 'Heroku',
     tooltip: `No Heroku deployment for this project yet.`,
   },
   PENDING: {
+    name: 'Pending',
     icon: 'clock',
     message: 'Heroku',
     tooltip: `Heroku deployment in progress...`,
   },
   SUCCESSFUL: {
+    name: 'Successful',
     icon: 'check',
     message: 'Heroku',
     tooltip: `The last Heroku deployment succeeded.`,
   },
   SYNCING: {
+    name: 'Syncing',
     icon: 'sync',
     message: 'Heroku',
     tooltip: `Fetching the current Heroku deployment status...`,
   },
   UNAVAILABLE: {
+    name: 'Unavailable',
     icon: 'alert',
     message: 'Heroku CLI unavailable',
     tooltip: `The "heroku" command doesn't seem available. Did you install Heroku CLI ?`,
@@ -51,16 +58,10 @@ const LOOP_DELAY: number = 5_000
 export default class HerokuStatus {
   private cwd: string = workspace.workspaceFolders[0].uri.fsPath
   private lastMessage: string
+  private lastStatus: string
   private statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left)
 
   constructor() {
-    if (!commandExistsSync('heroku')) {
-      this.setStatusTo(STATUS.UNAVAILABLE)
-      this.statusBarItem.show()
-
-      return
-    }
-
     this.start()
   }
 
@@ -77,14 +78,22 @@ export default class HerokuStatus {
     if (version !== 0) message += ` v${version}`
     if (date !== '') message += ` (${moment(date).fromNow()})`
 
-    if (message === this.lastMessage) return
+    if (message === this.lastMessage && status.name === this.lastStatus) return
 
     this.lastMessage = message
+    this.lastStatus = status.name
     this.statusBarItem.text = message
     this.statusBarItem.tooltip = status.tooltip
   }
 
   private async checkHerokuDeployments() {
+    if (!commandExistsSync('heroku')) {
+      this.setStatusTo(STATUS.UNAVAILABLE)
+      setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY)
+
+      return
+    }
+
     const [err, out] = await to<string>(exec('heroku', ['releases', '-n=1', '--json'], { cwd: this.cwd }))
 
     if (err !== null) {
