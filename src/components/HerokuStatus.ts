@@ -117,12 +117,12 @@ export default class HerokuStatus {
       return
     }
 
-    if (herokuReleases[0].status === 'pending') {
-      this.setStatusTo(STATUS.PENDING, herokuReleases[0].version, herokuReleases[0].created_at)
-      setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY)
+    // if (herokuReleases[0].status === 'pending') {
+    //   this.setStatusTo(STATUS.PENDING, herokuReleases[0].version, herokuReleases[0].created_at)
+    //   setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY)
 
-      return
-    }
+    //   return
+    // }
 
     if (herokuReleases[0].status === 'succeeded') {
       this.setStatusTo(STATUS.SUCCESSFUL, herokuReleases[0].version, herokuReleases[0].created_at)
