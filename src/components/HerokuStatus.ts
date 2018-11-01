@@ -77,7 +77,7 @@ export default class HerokuStatus {
   private setStatusTo(status: StatusContent, version: number = 0, date: string = ''): void {
     let message: string = `$(${status.icon})  ${status.message}`
     if (version !== 0) message += ` v${version}`
-    if (date !== '') message += ` (shortenMomentOutput(${moment(date).fromNow()}))`
+    if (date !== '') message += ` (${shortenMomentOutput(moment(date).fromNow())})`
 
     if (message === this.lastMessage && status.name === this.lastStatus) return
 
