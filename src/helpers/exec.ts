@@ -5,8 +5,6 @@ export default async function (
   args: string[] = [],
   options: SpawnOptions = {},
 ): Promise<any> {
-  console.log(`Running: ${command} ${args.join(' ')}`)
-
   return new Promise((resolve, reject) => {
     let res, stderr = '', stdout = ''
 
