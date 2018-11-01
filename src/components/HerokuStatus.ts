@@ -67,7 +67,11 @@ export default class HerokuStatus {
   }
 
   private async start(): Promise<void> {
-    if (!await this.isWorkspaceLinkedToHeroku()) return
+    if (!await this.isWorkspaceLinkedToHeroku()) {
+      setTimeout(this.start.bind(this), LOOP_DELAY)
+
+      return
+    }
 
     this.setStatusTo(STATUS.SYNCING)
     this.statusBarItem.show()
