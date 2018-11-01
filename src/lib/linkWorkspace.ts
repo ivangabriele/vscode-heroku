@@ -1,6 +1,6 @@
 import to from 'await-to-js'
 import { sync as commandExistsSync } from 'command-exists'
-import { ProgressLocation, window, workspace } from 'vscode'
+import { window, workspace } from 'vscode'
 
 import exec from '../helpers/exec'
 import showProgressNotification from '../helpers/showProgressNotification'
