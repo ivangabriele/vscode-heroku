@@ -17,13 +17,15 @@
 
 - You need to have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 - Your workspace needs to be linked to an existing application hosted on Heroku:<br>
-  Open the **Command Pallette** _(CMD+MAJ+P / CTRL+MAJ+P)_ and look for `Heroku: Link the current workspace
+  Open the **Command Palette** _(CMD+MAJ+P / CTRL+MAJ+P)_ and look for `Heroku: Link the current workspace
   to an existing Heroku app.` in order to do that.
 
 ## Roadmap
 
-1. Create and deploy a new Heroku app via the Command Palette.
-2. Handle pipelines.
+1. Open the current Heroku app Activity Dashboard when clicking on the Heroku Status.
+2. Add a command in the Command Palette to open the Heroku-hosted app.
+3. Create and deploy a new Heroku app via the Command Palette.
+4. Handle pipelines.
 
 ## Issues & Feature Requests
 
