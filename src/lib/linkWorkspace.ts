@@ -50,8 +50,8 @@ export default async function() {
   ))
   if (err2 !== null) return
 
-  window.showInformationMessage(`Your current workspace is now linked to "${herokuAppName}" Heroku app.` +
-                                `Please reload VS Code in order to enable the live Heroku status.` +
-                                `You can do that by opening the Command Palette (CMD+MAJ+P / CTRL+MAJ+P)` +
-                                `and look for the "Reload Window" command.`)
+  window.showInformationMessage(`[PLEASE READ CAREFULLY] Your current workspace is now linked to the ` +
+                                `"${herokuAppName}" Heroku app. Please reload VS Code in order to enable the live ` +
+                                `Heroku status. You can do that by opening the Command Palette ` +
+                                ` (CMD+MAJ+P / CTRL+MAJ+P) and look for the "Reload Window" command.`)
 }
