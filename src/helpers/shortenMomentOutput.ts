@@ -1,13 +1,13 @@
 export default function(momentOutput: string): string {
   return momentOutput
-    .replace(/a\sday/, '1d')
-    .replace(/\sdays/, 'd')
-    .replace(/an\shour/, '1h')
-    .replace(/\shours/, 'h')
-    .replace(/a\sminute/, '1m')
-    .replace(/\sminutes/, 'm')
-    .replace(/a\smonth/, '1mo')
-    .replace(/\smonths/, 'mo')
-    .replace(/a\syear?/, '1y')
-    .replace(/\syears/, 'y')
+    .replace(/a day/, '1d')
+    .replace(/ days/, 'd')
+    .replace(/an hour/, '1h')
+    .replace(/ hours/, 'h')
+    .replace(/a minute/, '1m')
+    .replace(/ minutes/, 'm')
+    .replace(/a month/, '1mo')
+    .replace(/ months/, 'mo')
+    .replace(/a year?/, '1y')
+    .replace(/ years/, 'y')
 }
