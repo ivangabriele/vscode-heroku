@@ -8,11 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.3.0] - 2018-11-01
 
 ## Added
-- Test setup
-- Simple helpers/exec() test
+- Test setup.
+- Simple helpers/exec() test.
 
 ### Changed
 - Lower status loop delay to 2.5s.
+- Increase spacing between icon and text in status bar.
 
 ## [1.2.0] - 2018-11-01
 
@@ -42,4 +43,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 - Initial release.
-- Status Bar Item with date
+- Status Bar Item with date.
