@@ -11,6 +11,7 @@
 ## Description
 
 - **Check your project's Heroku deployment status.**
+- **Link your current project's workspace to your Heroku app via the Command Palette.**
 
 ## Requirements
 
@@ -20,8 +21,8 @@
 
 ## Roadmap
 
-1. Link the current workspace to an existing Heroku app via the Command Palette.
-2. Create and deploy a new Heroku app via the Command Palette.
+1. Create and deploy a new Heroku app via the Command Palette.
+2. Handle pipelines.
 
 ## Issues & Feature Requests
 
