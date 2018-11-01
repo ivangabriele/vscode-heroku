@@ -17,7 +17,8 @@
 
 - You need to have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 - Your workspace needs to be linked to an existing application hosted on Heroku:<br>
-  `heroku git:remote -a YOUR_HEROKU_APP_NAME`
+  Open the **Command Pallette** _(CMD+MAJ+P / CTRL+MAJ+P)_ and look for `Heroku: Link the current workspace
+  to an existing Heroku app.` in order to do that.
 
 ## Roadmap
 
