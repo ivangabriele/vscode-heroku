@@ -24,7 +24,7 @@ export default async function() {
       if (err !== null) {
         window.showErrorMessage(`Something went wrong while trying to list your currents Heroku apps.`)
 
-        throw new Error(err)
+        throw err
       }
 
       const herokuAppsJson = JSON.parse(herokuApps.trim()) as HerokuApp[]
