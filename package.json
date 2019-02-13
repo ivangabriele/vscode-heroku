@@ -34,7 +34,7 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
-    "@types/fs-extra": "^5.0.4",
+    "@types/fs-extra": "^5.0.5",
     "@types/mocha": "^5.2.5",
     "@types/node": "^11.9.0",
     "fs-extra": "^7.0.1",
