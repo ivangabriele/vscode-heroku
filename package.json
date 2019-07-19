@@ -48,7 +48,7 @@
     "url": "https://www.ivangabriele.com"
   },
   "publisher": "ivangabriele",
-  "icon": "res/icon.png",
+  "icon": "https://github.com/ivangabriele/vscode-heroku/raw/master/res/icon.png",
   "categories": [
     "Other"
   ],
