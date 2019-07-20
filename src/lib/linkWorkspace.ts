@@ -1,54 +1,63 @@
-import to from 'await-to-js'
-import { sync as commandExistsSync } from 'command-exists'
-import { window, workspace } from 'vscode'
+// tslint:disable-next-line: import-name
+import to from 'await-to-js';
+import { sync as commandExistsSync } from 'command-exists';
+import { window, workspace } from 'vscode';
 
-import exec from '../helpers/exec'
-import showProgressNotification from '../helpers/showProgressNotification'
+import exec from '../helpers/exec';
+import showProgressNotification from '../helpers/showProgressNotification';
 
-import { HerokuApp } from './linkWorkspace.d'
+import { HerokuApp } from './linkWorkspace.d';
 
-export default async function() {
+export default async function () {
   // Check if "heroku" command alias is available
   if (!commandExistsSync('heroku')) {
-    window.showErrorMessage(`The command "heroku" doesn't seem to be availble. Did you install Heroku CLI ?`)
+    window.showErrorMessage(
+      `The command "heroku" doesn't seem to be availble. Did you install Heroku CLI ?`,
+    );
 
-    return
+    return;
   }
 
-  const cwd = workspace.workspaceFolders[0].uri.fsPath
+  const cwd = workspace.workspaceFolders[0].uri.fsPath;
 
   const [err1, herokuAppsNames] = await to(showProgressNotification(
     'Listing current Heroku apps...',
     async () => {
-      const [err, herokuApps] = await to<string>(exec('heroku', ['apps', '--json'], { cwd }))
+      const [err, herokuApps] = await to<string>(exec('heroku', ['apps', '--json'], { cwd }));
       if (err !== null) {
-        window.showErrorMessage(`Something went wrong while trying to list your currents Heroku apps.`)
+        window.showErrorMessage(
+          'Something went wrong while trying to list your currents Heroku apps.',
+        );
 
-        throw err
+        throw err;
       }
 
-      const herokuAppsJson = JSON.parse(herokuApps.trim()) as HerokuApp[]
+      const herokuAppsJson = JSON.parse(herokuApps.trim()) as HerokuApp[];
 
-      return herokuAppsJson.map(({ name }) => name)
+      return herokuAppsJson.map(({ name }) => name);
     },
-  ))
-  if (err1 !== null) return
+  ));
+  if (err1 !== null) return;
 
-  const herokuAppName = await window.showQuickPick(herokuAppsNames)
-  if (herokuAppName === undefined) return
+  const herokuAppName = await window.showQuickPick(herokuAppsNames);
+  if (herokuAppName === undefined) return;
 
   const [err2] = await to(showProgressNotification(
     'Listing current Heroku apps...',
     async () => {
-      const [err] = await to<string>(exec('heroku', ['git:remote', '-a', herokuAppName], { cwd }))
+      const [err] = await to<string>(exec('heroku', ['git:remote', '-a', herokuAppName], { cwd }));
       if (err !== null) {
-        window.showErrorMessage(`Something went wrong while linking your Heroku app: "${herokuAppName}".`)
+        window.showErrorMessage(
+          `Something went wrong while linking your Heroku app: "${herokuAppName}".`,
+          );
 
-        return
+        return;
       }
     },
-  ))
-  if (err2 !== null) return
+  ));
+  if (err2 !== null) return;
 
-  window.showInformationMessage(`Your current workspace is now linked to the  "${herokuAppName}" Heroku app.`)
+  window.showInformationMessage(
+    `Your current workspace is now linked to the  "${herokuAppName}" Heroku app.`,
+    );
 }
