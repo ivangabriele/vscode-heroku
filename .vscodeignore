@@ -1,14 +1,14 @@
-/.vscode/**
-/.vscode-test/**
-/node_modules/**
-/out/test/**
-/out/**/*.map
-/scripts/**
-/src/**
-/typings/**
+.vscode/**
+.vscode-test/**
+node_modules/**
+out/test/**
+out/**/*.map
+scripts/**
+src/**
+typings/**
 
-/.gitignore
-/.travis.yml
-/Dockerfile
-/tsconfig.json
-/tslint.json
+.gitignore
+.travis.yml
+Dockerfile
+tsconfig.json
+tslint.json
