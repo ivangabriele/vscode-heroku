@@ -1,6 +1,6 @@
 // tslint:disable-next-line: import-name
 import to from 'await-to-js';
-import * as moment from 'moment';
+import moment from 'moment';
 import { StatusBarAlignment, StatusBarItem, window, workspace } from 'vscode';
 
 import exec from '../helpers/exec';
@@ -62,14 +62,16 @@ export default class HerokuStatus {
   private herokuAppName: string;
   private lastMessage: string;
   private lastStatus: string;
-  private statusBarItem: StatusBarItem = window.createStatusBarItem(StatusBarAlignment.Left);
+  private statusBarItem: StatusBarItem = window.createStatusBarItem(
+    StatusBarAlignment.Left,
+  );
 
   constructor() {
     this.start();
   }
 
   private async start(): Promise<void> {
-    if (!await this.isWorkspaceLinkedToHeroku()) {
+    if (!(await this.isWorkspaceLinkedToHeroku())) {
       setTimeout(this.start.bind(this), RETRY_DELAY);
 
       return;
@@ -80,10 +82,15 @@ export default class HerokuStatus {
     await this.checkHerokuDeployments();
   }
 
-  private setStatusTo(status: StatusContent, version: number = 0, date: string = ''): void {
+  private setStatusTo(
+    status: StatusContent,
+    version: number = 0,
+    date: string = '',
+  ): void {
     let message: string = `$(${status.icon})  ${status.message}`;
     if (version !== 0) message += ` v${version}`;
-    if (date !== '') message += ` (${shortenMomentOutput(moment(date).fromNow())})`;
+    if (date !== '')
+      message += ` (${shortenMomentOutput(moment(date).fromNow())})`;
 
     if (message === this.lastMessage && status.name === this.lastStatus) return;
 
@@ -95,14 +102,16 @@ export default class HerokuStatus {
 
   private async checkHerokuDeployments() {
     const [err, out] = await to<string>(
-      exec('heroku', ['releases', '-n=1', '--json', '-a', this.herokuAppName], { cwd: this.cwd }),
+      exec('heroku', ['releases', '-n=1', '--json', '-a', this.herokuAppName], {
+        cwd: this.cwd,
+      }),
     );
 
     if (err !== null) {
       this.setStatusTo(STATUS.ERROR);
       await window.showErrorMessage(
         `An error happened while running "heroku releases -n=1 --json -a ${this.herokuAppName}": ` +
-        `${err.message} You should fix this error and reload VS Code.`,
+          `${err.message} You should fix this error and reload VS Code.`,
       );
 
       return;
@@ -125,13 +134,21 @@ export default class HerokuStatus {
     // }
 
     if (herokuReleases[0].status === 'succeeded') {
-      this.setStatusTo(STATUS.SUCCESSFUL, herokuReleases[0].version, herokuReleases[0].created_at);
+      this.setStatusTo(
+        STATUS.SUCCESSFUL,
+        herokuReleases[0].version,
+        herokuReleases[0].created_at,
+      );
       setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY);
 
       return;
     }
 
-    this.setStatusTo(STATUS.FAILED, herokuReleases[0].version, herokuReleases[0].created_at);
+    this.setStatusTo(
+      STATUS.FAILED,
+      herokuReleases[0].version,
+      herokuReleases[0].created_at,
+    );
     setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY);
   }
 
@@ -140,7 +157,9 @@ export default class HerokuStatus {
    * @todo Handle multiple Heroku apps case.
    */
   private async isWorkspaceLinkedToHeroku(): Promise<boolean> {
-    const [err, output] = await to<string>(exec('git', ['remote', '-v'], { cwd: this.cwd }));
+    const [err, output] = await to<string>(
+      exec('git', ['remote', '-v'], { cwd: this.cwd }),
+    );
     if (err !== null) return false;
 
     const foundHerokuRepositories = output.match(
