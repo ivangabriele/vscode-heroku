@@ -13,7 +13,7 @@ export default async function () {
   const [err1, herokuAppsNames] = await to(showProgressNotification(
     'Listing current Heroku apps...',
     async () => {
-      const [err, herokuApps] = await to<string>(exec('heroku', ['apps', '--json'], { cwd }));
+      const [err, herokuApps] = await to<string>(exec('heroku', ['apps', '-A', '--json'], { cwd }));
       if (err !== null) {
         window.showErrorMessage(
           'Something went wrong while trying to list your currents Heroku apps.',
