@@ -1,6 +1,6 @@
 {
   "name": "vscode-heroku",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "displayName": "Heroku",
   "description": "Check your project's Heroku deployment status.",
   "main": "./out/extension",
