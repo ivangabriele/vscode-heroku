@@ -100,7 +100,10 @@ export default class HerokuStatus {
 
     if (err !== null) {
       this.setStatusTo(STATUS.ERROR);
-      setTimeout(this.checkHerokuDeployments.bind(this), LOOP_DELAY);
+      await window.showErrorMessage(
+        `An error happened while running "heroku releases -n=1 --json -a ${this.herokuAppName}": ` +
+        `${err.message} You should fix this error and reload VS Code.`,
+      );
 
       return;
     }
