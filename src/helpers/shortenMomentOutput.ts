@@ -1,4 +1,4 @@
-export default function(momentOutput: string): string {
+export default function (momentOutput: string): string {
   return momentOutput
     .replace(/a day/, '1d')
     .replace(/ days/, 'd')
@@ -9,5 +9,5 @@ export default function(momentOutput: string): string {
     .replace(/a month/, '1mo')
     .replace(/ months/, 'mo')
     .replace(/a year?/, '1y')
-    .replace(/ years/, 'y')
+    .replace(/ years/, 'y');
 }
