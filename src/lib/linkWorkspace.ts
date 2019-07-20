@@ -1,6 +1,5 @@
 // tslint:disable-next-line: import-name
 import to from 'await-to-js';
-import { sync as commandExistsSync } from 'command-exists';
 import { window, workspace } from 'vscode';
 
 import exec from '../helpers/exec';
@@ -9,15 +8,6 @@ import showProgressNotification from '../helpers/showProgressNotification';
 import { HerokuApp } from './linkWorkspace.d';
 
 export default async function () {
-  // Check if "heroku" command alias is available
-  if (!commandExistsSync('heroku')) {
-    window.showErrorMessage(
-      `The command "heroku" doesn't seem to be availble. Did you install Heroku CLI ?`,
-    );
-
-    return;
-  }
-
   const cwd = workspace.workspaceFolders[0].uri.fsPath;
 
   const [err1, herokuAppsNames] = await to(showProgressNotification(
