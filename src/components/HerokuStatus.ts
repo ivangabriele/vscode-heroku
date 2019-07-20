@@ -1,7 +1,6 @@
 // tslint:disable-next-line: import-name
 import to from 'await-to-js';
 import * as moment from 'moment';
-import { EOL } from 'os';
 import { StatusBarAlignment, StatusBarItem, window, workspace } from 'vscode';
 
 import exec from '../helpers/exec';
