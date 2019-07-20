@@ -12,6 +12,7 @@
 
 - **Check your project's Heroku deployment status.**
 - **Link your current project's workspace to your Heroku app via the Command Palette.**
+- **Includes teams applications.**
 
 ## Requirements
 
