@@ -13,3 +13,6 @@ Dockerfile
 tsconfig.json
 tslint.json
 yarn.lock
+
+*.svg
+*.vsix
