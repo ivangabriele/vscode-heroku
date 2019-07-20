@@ -12,3 +12,4 @@ typings/**
 Dockerfile
 tsconfig.json
 tslint.json
+yarn.lock
