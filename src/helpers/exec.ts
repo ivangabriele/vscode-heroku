@@ -1,4 +1,4 @@
-import { exec, ExecOptions } from 'child_process'
+import { exec, ExecOptions } from 'child_process';
 
 export default async function (
   command: string,
@@ -6,22 +6,22 @@ export default async function (
   options: ExecOptions = {},
 ): Promise<any> {
   return new Promise((resolve, reject) => {
-    let res, stderr = '', stdout = ''
+    let stderr = '';
+    let stdout = '';
 
     try {
-      const batch = exec([command].concat(args).join(' '), options)
+      const batch = exec([command].concat(args).join(' '), options);
 
-      batch.stdout.on('data', data => stdout += data.toString())
-      batch.stderr.on('data', data => stderr += data.toString())
+      batch.stdout.on('data', data => stdout += data.toString());
+      batch.stderr.on('data', data => stderr += data.toString());
 
-      batch.on('close', function () {
-        if (stderr !== '') return reject(stderr.trim())
+      batch.on('close', () => {
+        if (stderr !== '') return reject(stderr.trim());
 
-        resolve(stdout)
-      })
+        resolve(stdout);
+      });
+    } catch (err) {
+      reject(err);
     }
-    catch (err) {
-      reject(err)
-    }
-  })
+  });
 }
