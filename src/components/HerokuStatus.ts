@@ -55,7 +55,8 @@ const STATUS: Status = {
   },
 };
 
-const LOOP_DELAY: number = 10_000;
+const LOOP_DELAY: number = 1_000;
+const RETRY_DELAY: number = 10_000;
 
 export default class HerokuStatus {
   private cwd: string = workspace.workspaceFolders[0].uri.fsPath;
@@ -70,7 +71,7 @@ export default class HerokuStatus {
 
   private async start(): Promise<void> {
     if (!await this.isWorkspaceLinkedToHeroku()) {
-      setTimeout(this.start.bind(this), LOOP_DELAY);
+      setTimeout(this.start.bind(this), RETRY_DELAY);
 
       return;
     }
@@ -136,15 +137,21 @@ export default class HerokuStatus {
   }
 
   /**
+   * @todo Show a warning when using SSH instead fo HTTPS.
    * @todo Handle multiple Heroku apps case.
    */
   private async isWorkspaceLinkedToHeroku(): Promise<boolean> {
     const [err, output] = await to<string>(exec('git', ['remote', '-v'], { cwd: this.cwd }));
     if (err !== null) return false;
 
-    const foundHerokuRepositories = output.match(/git@heroku\.com:([^\s]+)/gi);
+    const foundHerokuRepositories = output.match(
+      /(https:\/\/git\.heroku\.com\/|git@heroku\.com:)([^\s\.]+)/gi,
+    );
     if (foundHerokuRepositories === null) return false;
-    this.herokuAppName = foundHerokuRepositories[0].substr(15);
+    const firstRepositoryUrl = foundHerokuRepositories[0];
+    this.herokuAppName = foundHerokuRepositories[0].substr(
+      firstRepositoryUrl.startsWith('https') ? 23 : 15,
+    );
 
     return true;
   }
