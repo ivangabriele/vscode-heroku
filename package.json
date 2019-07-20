@@ -22,8 +22,10 @@
   "scripts": {
     "compile": "tsc -p ./",
     "pretest": "yarn compile",
-    "test": "node ./out/test/runTest.js",
+    "test": "yarn test:lint && node ./out/test/runTest.js",
     "test:docker": "./scripts/run_tests_in_docker.sh",
+    "test:lint": "tslint -p ./tsconfig.json",
+    "test:lint:fix": "yarn test:lint --fix",
     "preversion": "npm run compile",
     "postversion": "git push origin HEAD & git push --tags",
     "watch": "tsc -watch -p ./"
