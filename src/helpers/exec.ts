@@ -16,7 +16,7 @@ export default async function (
       batch.stderr.on('data', data => stderr += data.toString());
 
       batch.on('close', () => {
-        if (stderr !== '') return reject(stderr.trim());
+        if (stderr !== '') return reject(new Error(stderr.trim()));
 
         resolve(stdout);
       });
