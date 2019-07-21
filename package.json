@@ -1,38 +1,28 @@
 {
   "name": "vscode-heroku",
   "version": "1.4.1",
-  "displayName": "Heroku",
   "description": "Check your project's Heroku deployment status.",
-  "main": "./out/extension",
   "license": "MIT",
+  "main": "./out/extension",
   "engines": {
     "vscode": "1.36.1"
   },
-  "activationEvents": [
-    "*"
-  ],
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.vscode-heroku.linkWorkspace",
-        "title": "Heroku: Link the current workspace to an existing Heroku app"
-      }
-    ]
-  },
   "scripts": {
-    "compile": "tsc -p ./",
-    "pretest": "yarn compile",
-    "test": "yarn test:lint && node ./out/test/runTest.js",
+    "compile": "rimraf ./out && rollup -c",
+    "compile:dev": "tsc -p ./ ",
+    "pretest": "rimraf ./out && yarn compile:dev",
+    "test": "yarn test:lint && yarn test:inte",
     "test:docker": "./scripts/run_tests_in_docker.sh",
+    "test:inte": "node ./out/test/runTest.js",
     "test:lint": "tslint -p ./tsconfig.json",
-    "test:lint:fix": "yarn test:lint --fix",
-    "preversion": "npm run compile",
-    "postversion": "git push origin HEAD & git push --tags",
-    "watch": "tsc -watch -p ./"
+    "preversion": "yarn compile",
+    "postversion": "git push origin HEAD && git push --tags",
+    "vscode:prepublish": "yarn compile",
+    "watch": "rimraf ./out && yarn compile:dev --watch"
   },
   "dependencies": {
     "await-to-js": "2.1.1",
-    "command-exists": "1.2.8",
+    "is-command": "2.0.2",
     "moment": "2.24.0"
   },
   "devDependencies": {
@@ -43,6 +33,7 @@
     "@types/vscode": "1.36.0",
     "glob": "7.1.4",
     "mocha": "6.2.0",
+    "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "rollup": "1.17.0",
     "rollup-plugin-commonjs": "10.0.1",
@@ -50,8 +41,22 @@
     "rollup-plugin-typescript2": "0.22.0",
     "tslint": "5.18.0",
     "tslint-config-airbnb": "5.11.1",
+    "tslint-config-prettier": "1.18.0",
     "typescript": "3.5.3",
+    "vscode": "1.1.35",
     "vscode-test": "1.0.2"
+  },
+  "displayName": "Heroku",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.vscode-heroku.linkWorkspace",
+        "title": "Heroku: Link the current workspace to an existing Heroku app"
+      }
+    ]
   },
   "author": {
     "name": "Ivan Gabriele",

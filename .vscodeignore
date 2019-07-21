@@ -1,18 +1,22 @@
+.rpt2_cache/**
 .vscode/**
 .vscode-test/**
 node_modules/**
-out/test/**
-out/**/*.map
+out/**
+!out/extension.js
 scripts/**
 src/**
 typings/**
 
+.editorconfig
 .gitignore
 .travis.yml
-Dockerfile
+rollup.config.js
+test.Dockerfile
 tsconfig.json
 tslint.json
 yarn.lock
 
+*.log
 *.svg
 *.vsix

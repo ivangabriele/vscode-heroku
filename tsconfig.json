@@ -1,13 +1,18 @@
 {
   "compilerOptions": {
-		"moduleResolution": "node",
-		"noImplicitAny": false,
-		"removeComments": false,
-    "module": "commonjs",
-    "outDir": "out",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": true,
+    "module": "es2015",
+    "outDir": "./out",
     "preserveConstEnums": true,
-    "rootDir": "src",
+    "skipLibCheck": true,
+    "rootDir": "./src",
     "sourceMap": true,
     "target": "es6"
-  }
+  },
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules/**/*", "./out/**/*"]
 }
