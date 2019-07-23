@@ -10,8 +10,13 @@ const NO_HEROKU_ERROR_ACTION_URL =
   'https://devcenter.heroku.com/articles/heroku-cli#download-and-install';
 
 export async function activate(context: ExtensionContext) {
-  // Skip extension start if we can't detect a workspace:
-  if (workspace.workspaceFolders === undefined) return;
+  // Is there a workspace ?:
+  if (
+    workspace.workspaceFolders === undefined ||
+    workspace.workspaceFolders.length === 0
+  ) {
+    return;
+  }
 
   // Is Heroku CLI available ?
   if (!(await isCommand('heroku'))) {
