@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog][link-keep-changelog] and this project
 adheres to [Semantic Versioning][link-semver].
 
+## [1.4.3] - 2019-07-23
+
+### Fixed
+
+- Non-activation when no workspace.
+
 ## [1.4.2] - 2019-07-21
 
 ### Fixed
