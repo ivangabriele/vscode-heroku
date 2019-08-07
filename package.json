@@ -44,7 +44,7 @@
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.5.3",
     "vscode": "1.1.35",
-    "vscode-test": "1.0.2"
+    "vscode-test": "1.2.0"
   },
   "displayName": "Heroku",
   "activationEvents": [
