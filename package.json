@@ -42,7 +42,7 @@
     "tslint": "5.18.0",
     "tslint-config-airbnb": "5.11.1",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.5.3",
+    "typescript": "3.6.3",
     "vscode": "1.1.35",
     "vscode-test": "1.0.2"
   },
