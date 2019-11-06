@@ -39,7 +39,7 @@
     "rollup-plugin-commonjs": "10.0.1",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-typescript2": "0.22.0",
-    "tslint": "5.18.0",
+    "tslint": "5.20.1",
     "tslint-config-airbnb": "5.11.1",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.5.3",
