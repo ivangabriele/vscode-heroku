@@ -18,7 +18,7 @@
 
 - You need to have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 - Your workspace needs to be linked to an existing application hosted on Heroku:<br>
-  Open the **Command Palette** _(CMD+MAJ+P / CTRL+MAJ+P)_ and look for `Heroku: Link the current workspace
+  Open the **Command Palette** _(CMD+SHIFT+P / CTRL+SHIFT+P)_ and look for `Heroku: Link the current workspace
   to an existing Heroku app.` in order to do that.
 
 ## Roadmap
