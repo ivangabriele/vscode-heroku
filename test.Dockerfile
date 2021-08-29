@@ -1,4 +1,4 @@
-FROM igabriele/node-vscode:10
+FROM igabriele/node-vscode:12
 
 WORKDIR /app
 
