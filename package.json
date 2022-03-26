@@ -28,11 +28,11 @@
   "devDependencies": {
     "@types/fs-extra": "8.0.0",
     "@types/glob": "7.1.1",
-    "@types/mocha": "5.2.7",
+    "@types/mocha": "9.1.0",
     "@types/node": "12.6.8",
     "@types/vscode": "1.36.0",
     "glob": "7.1.4",
-    "mocha": "6.2.0",
+    "mocha": "9.2.2",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "rollup": "1.17.0",
