@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "./out/extension",
   "engines": {
-    "vscode": "1.66.0"
+    "vscode": "1.66.1"
   },
   "scripts": {
     "compile": "rimraf ./out && rollup -c",
