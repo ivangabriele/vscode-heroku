@@ -37,7 +37,7 @@
     "rimraf": "3.0.2",
     "rollup": "2.70.1",
     "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.2.0",
+    "@rollup/plugin-node-resolve": "6.0.0",
     "rollup-plugin-typescript2": "0.31.2",
     "tslint": "5.20.1",
     "tslint-config-airbnb": "5.11.2",
