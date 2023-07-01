@@ -1,25 +1,34 @@
 # Heroku Extension for Visual Studio Code
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
-[![Visual Studio Marketplace](https://vsmarketplacebadge.apphb.com/installs-short/ivangabriele.vscode-heroku.svg?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=ivangabriele.vscode-heroku)
-[![Travis](https://img.shields.io/travis/ivangabriele/vscode-heroku.svg?style=flat-square)](https://travis-ci.org/ivangabriele/vscode-heroku)
-[![David](https://img.shields.io/david/ivangabriele/vscode-heroku.svg?style=flat-square)](https://david-dm.org/ivangabriele/vscode-heroku?type=dev)
-[![David](https://img.shields.io/david/dev/ivangabriele/vscode-heroku.svg?style=flat-square)](https://david-dm.org/ivangabriele/vscode-heroku?type=dev)
+[![MIT License](https://img.shields.io/github/license/ivangabriele/vscode-heroku?style=for-the-badge)](https://github.com/ivangabriele/vscode-heroku/blob/main/LICENSE)
+[![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/i/ivangabriele.vscode-heroku?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=ivangabriele.vscode-heroku)
+[![Main Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/vscode-heroku/main.yml?style=for-the-badge)](https://github.com/ivangabriele/vscode-heroku/actions?query=main)
 
 ---
 
-## Description
+- [Features](#features)
+- [Requirements](#requirements)
+- [Roadmap](#roadmap)
+- [Issues \& Feature Requests](#issues--feature-requests)
+- [Changelog](#changelog)
+
+---
+
+## Features
 
 - **Check your project's Heroku deployment status.**
+- **Log into Heroku CLI.**
+- **Logout from Heroku CLI.**
 - **Link your current project's workspace to your Heroku app via the Command Palette.**
 - **Includes teams applications.**
 
 ## Requirements
 
-- You need to have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
-- Your workspace needs to be linked to an existing application hosted on Heroku:<br>
-  Open the **Command Palette** _(CMD+SHIFT+P / CTRL+SHIFT+P)_ and look for `Heroku: Link the current workspace
-  to an existing Heroku app.` in order to do that.
+- You need to have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli).
+- You need to be authenticated via Heroku CLI:<br />
+  **Command Palette** > `Heroku: Login`.
+- Your workspace needs to be linked to an existing application hosted on Heroku:<br />
+  **Command Palette** > `Heroku: Link current workspace to an existing Heroku app`.
 
 ## Roadmap
 
@@ -32,24 +41,6 @@
 
 Please report any issue or feature request [there](https://github.com/ivangabriele/vscode-heroku/issues).
 
-## Change Log
+## Changelog
 
 Please check the [changelog file](https://github.com/ivangabriele/vscode-heroku/blob/master/CHANGELOG.md).
-
-## Contribute
-
-To be able to contribute to TFS development, you need to be at ease with **Typescript** and **Git** usage.
-
-    git clone https://github.com/ivangabriele/vscode-heroku.git
-    cd vscode-heroku
-    npm install
-
-## Links
-
-- [Heroku extension on Github](https://github.com/ivangabriele/vscode-heroku)
-- [Heroku extension on Visual Studio Market Place](https://marketplace.visualstudio.com/items/ivangabriele.vscode-heroku)
-- [MIT Licence](https://github.com/ivangabriele/vscode-heroku/blob/master/LICENSE)
-
-## Licenses
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fivangabriele%2Fvscode-heroku?ref=badge_large)
