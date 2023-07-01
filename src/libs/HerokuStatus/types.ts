@@ -2,9 +2,9 @@ export interface Status {
   [key: string]: StatusContent
 }
 export interface StatusContent {
-  name: string
   icon: string
   message: string
+  name: string
   tooltip: string
 }
 
@@ -15,18 +15,18 @@ export interface HerokuRelease {
     name: string
   }
   created_at: string
+  current: boolean
   description: string
-  status: 'failed' | 'pending' | 'succeeded'
   id: string
+  output_stream_url: string | null
   slug: {
     id: string
   }
+  status: 'failed' | 'pending' | 'succeeded'
   updated_at: string
   user: {
     email: string
     id: string
   }
   version: number
-  current: boolean
-  output_stream_url: string | null
 }

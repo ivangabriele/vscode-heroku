@@ -1,27 +1,25 @@
-import { exec, ExecOptions } from 'child_process';
+import { $, ExecaReturnValue, Options } from 'execa'
+import { workspace } from 'vscode'
 
-export default async function (
-  command: string,
-  args: string[] = [],
-  options: ExecOptions = {},
-): Promise<any> {
-  return new Promise((resolve, reject) => {
-    let stderr = '';
-    let stdout = '';
+import { InternalError } from '../libs/InternalError'
 
-    try {
-      const batch = exec([command].concat(args).join(' '), options);
+const DEFAULT_OPTIONS: Options = {
+  reject: false,
+}
 
-      batch.stdout.on('data', data => stdout += data.toString());
-      batch.stderr.on('data', data => stderr += data.toString());
+export async function exec(statement: string, options: Options = {}): Promise<ExecaReturnValue<string>> {
+  if (!workspace.workspaceFolders) {
+    throw new InternalError('`workspace.workspaceFolders` is undefined.')
+  }
+  if (workspace.workspaceFolders.length === 0) {
+    throw new InternalError('`workspace.workspaceFolders` is empty.')
+  }
 
-      batch.on('close', () => {
-        if (stderr !== '') return reject(new Error(stderr.trim()));
+  const controlledOptions = {
+    ...DEFAULT_OPTIONS,
+    cwd: workspace.workspaceFolders[0].uri.fsPath,
+    ...options,
+  }
 
-        resolve(stdout);
-      });
-    } catch (err) {
-      reject(err);
-    }
-  });
+  return $(controlledOptions)`${statement}`
 }

@@ -1,16 +1,18 @@
 export interface HerokuApp {
   acm: boolean
   archived_at: string | null
-  buildpack_provided_description: string
   build_stack: {
     id: string
     name: string
   }
+  buildpack_provided_description: string
   created_at: string
-  id: string
   git_url: string
+  id: string
+  internal_routing: null
   maintenance: boolean
   name: string
+  organization: null
   owner: {
     email: string
     id: string
@@ -19,17 +21,15 @@ export interface HerokuApp {
     id: string
     name: 'eu' | 'us'
   }
-  organization: null
-  team: null
-  space: null
-  internal_routing: null,
   released_at: string
   repo_size: number | null
   slug_size: number | null
+  space: null
   stack: {
     id: string
     name: string
-  },
+  }
+  team: null
   updated_at: string
   web_url: string
 }

@@ -1,60 +1,79 @@
 {
   "name": "vscode-heroku",
-  "version": "1.4.3",
   "description": "Check your project's Heroku deployment status.",
   "license": "MIT",
-  "main": "./out/extension",
+  "version": "1.4.3",
   "engines": {
-    "vscode": "1.66.1"
+    "node": ">=16",
+    "vscode": "^1.79.2"
   },
+  "main": "./build/extension.js",
   "scripts": {
-    "compile": "rimraf ./out && rollup -c",
-    "compile:dev": "tsc -p ./ ",
-    "pretest": "rimraf ./out && yarn compile:dev",
+    "build": "rollup -c",
+    "clean": "rm -Rf ./build",
+    "dev:install": "./scripts/dev/install_heroku_cli.sh",
+    "dev:uninstall": "./scripts/dev/uninstall_heroku_cli.sh",
+    "pretest": "yarn clean && yarn build",
     "test": "yarn test:lint && yarn test:inte",
     "test:docker": "./scripts/run_tests_in_docker.sh",
-    "test:inte": "node ./out/test/runTest.js",
-    "test:lint": "tslint -p ./tsconfig.json",
-    "preversion": "yarn compile",
+    "test:e2e": "node ./build/test/runTest.js",
+    "test:lint": "eslint .",
+    "test:type": "tsc --noEmit",
+    "preversion": "yarn build",
     "postversion": "git push origin HEAD && git push --tags",
-    "vscode:prepublish": "yarn compile",
-    "watch": "rimraf ./out && yarn compile:dev --watch"
-  },
-  "dependencies": {
-    "await-to-js": "3.0.0",
-    "is-command": "2.0.2",
-    "moment": "2.29.2"
+    "vscode:prepublish": "yarn clean && yarn build",
+    "watch": "yarn clean && yarn build"
   },
   "devDependencies": {
-    "@types/fs-extra": "9.0.13",
-    "@types/glob": "7.2.0",
-    "@types/mocha": "9.1.0",
-    "@types/node": "16.11.26",
-    "@types/vscode": "1.66.0",
-    "glob": "7.2.0",
-    "mocha": "9.2.2",
-    "prettier": "2.6.2",
-    "rimraf": "3.0.2",
-    "rollup": "2.70.1",
-    "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-typescript2": "0.31.2",
-    "tslint": "5.20.1",
-    "tslint-config-airbnb": "5.11.2",
-    "tslint-config-prettier": "1.18.0",
-    "typescript": "4.6.3",
-    "vscode": "1.1.37",
-    "vscode-test": "1.6.1"
+    "@ivangabriele/eslint-config-typescript-base": "7.1.1",
+    "@ivangabriele/prettier-config": "3.1.0",
+    "@ivangabriele/tsconfig-node": "1.2.2",
+    "@rollup/plugin-commonjs": "25.0.2",
+    "@rollup/plugin-node-resolve": "15.1.0",
+    "@swc/core": "1.3.67",
+    "@types/mocha": "10.0.1",
+    "@types/node": "20.3.3",
+    "@types/vscode": "1.79.1",
+    "@typescript-eslint/eslint-plugin": "5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
+    "@vscode/test-electron": "2.3.3",
+    "eslint": "8.44.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jest": "27.2.2",
+    "eslint-plugin-no-null": "1.0.2",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-sort-destructure-keys": "1.5.0",
+    "eslint-plugin-sort-keys-fix": "1.1.2",
+    "eslint-plugin-typescript-sort-keys": "2.3.0",
+    "execa": "7.1.1",
+    "glob": "10.3.1",
+    "is-command": "2.0.2",
+    "mocha": "10.2.0",
+    "moment": "2.29.2",
+    "prettier": "2.8.8",
+    "rollup": "3.26.0",
+    "rollup-plugin-swc3": "0.8.2",
+    "tslib": "2.6.0",
+    "typescript": "5.1.6"
   },
+  "packageManager": "yarn@3.6.1",
+  "prettier": "@ivangabriele/prettier-config",
   "displayName": "Heroku",
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "contributes": {
     "commands": [
       {
-        "command": "extension.vscode-heroku.linkWorkspace",
-        "title": "Heroku: Link the current workspace to an existing Heroku app"
+        "command": "extension.vscode-heroku.linkWorkspaceToHerokuApp",
+        "title": "Heroku: Link current workspace to an existing Heroku app"
+      },
+      {
+        "command": "extension.vscode-heroku.logIntoHeroku",
+        "title": "Heroku: Login"
       }
     ]
   },
@@ -63,11 +82,14 @@
     "email": "ivan.gabriele@gmail.com",
     "url": "https://www.ivangabriele.com"
   },
-  "publisher": "ivangabriele",
-  "icon": "res/icon.png",
+  "bugs": {
+    "url": "https://github.com/ivangabriele/vscode-heroku/issues"
+  },
   "categories": [
     "Other"
   ],
+  "homepage": "https://github.com/ivangabriele/vscode-heroku#readme",
+  "icon": "./res/icon.png",
   "keywords": [
     "extension",
     "heroku",
@@ -75,12 +97,9 @@
     "vsc",
     "vscode"
   ],
+  "publisher": "ivangabriele",
   "repository": {
     "type": "git",
     "url": "https://github.com/ivangabriele/vscode-heroku.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ivangabriele/vscode-heroku/issues"
-  },
-  "homepage": "https://github.com/ivangabriele/vscode-heroku#readme"
+  }
 }
