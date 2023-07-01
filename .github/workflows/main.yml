@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - name: Setup
         uses: actions/setup-node@v3
         with:
@@ -19,12 +17,6 @@ jobs:
           node-version: 16
       - name: Install
         run: yarn
-      - name: Lint commits
-        uses: wagoid/commitlint-github-action@v5
-        with:
-          commitDepth: 25
-          configFile: ./.commitlintrc
-          failOnWarnings: true
       - name: Lint code
         run: yarn test:lint
 
