@@ -72,8 +72,12 @@
         "title": "Heroku: Link current workspace to an existing Heroku app"
       },
       {
-        "command": "extension.vscode-heroku.logIntoHeroku",
-        "title": "Heroku: Login"
+        "command": "extension.vscode-heroku.logInToHerokuCli",
+        "title": "Heroku: Log In to Heroku CLI"
+      },
+      {
+        "command": "extension.vscode-heroku.logOutOfHerokuCli",
+        "title": "Heroku: Log Out of Heroku CLI"
       }
     ]
   },

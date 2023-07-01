@@ -7,7 +7,7 @@
 ---
 
 - [Features](#features)
-- [Requirements](#requirements)
+- [Commands](#commands)
 - [Roadmap](#roadmap)
 - [Issues \& Feature Requests](#issues--feature-requests)
 - [Changelog](#changelog)
@@ -16,26 +16,24 @@
 
 ## Features
 
-- **Check your project's Heroku deployment status.**
-- **Log into Heroku CLI.**
-- **Logout from Heroku CLI.**
-- **Link your current project's workspace to your Heroku app via the Command Palette.**
-- **Includes teams applications.**
+- [x] Live Heroku application deployment status (Status Bar)
+- [x] Heroku CLI Log In/Out (Command Palette)
+- [x] Current workspace Heroku application linking (Command Palette)
+- [x] Heroku Teams support
 
-## Requirements
+## Commands
 
-- You need to have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli).
-- You need to be authenticated via Heroku CLI:<br />
-  **Command Palette** > `Heroku: Login`.
-- Your workspace needs to be linked to an existing application hosted on Heroku:<br />
-  **Command Palette** > `Heroku: Link current workspace to an existing Heroku app`.
+- `Heroku: Link current workspace to an existing Heroku app`
+- `Heroku: Log In to Heroku CLI`
+- `Heroku: Log Out of Heroku CLI`
 
 ## Roadmap
 
-1. Open the current Heroku app Activity Dashboard when clicking on the Heroku Status.
-2. Add a command in the Command Palette to open the Heroku-hosted app.
-3. Create and deploy a new Heroku app via the Command Palette.
-4. Handle pipelines.
+- [ ] Heroku application Activity Dashboard opening (Status Bar Action)
+- [ ] Heroku application creation (Command Palette)
+- [ ] Heroku application deployment (Command Palette)
+- [ ] Heroku application opening (Command Palette)
+- [ ] Herokup Pipelines support
 
 ## Issues & Feature Requests
 

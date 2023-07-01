@@ -1,13 +1,18 @@
-import { $, ExecaReturnValue, Options } from 'execa'
+import { execa, ExecaReturnValue, Options } from 'execa'
 import { workspace } from 'vscode'
 
 import { InternalError } from '../libs/InternalError'
 
-const DEFAULT_OPTIONS: Options = {
-  reject: false,
+export interface ExecOptions extends Options {
+  shouldThrowOnStderr?: boolean
 }
 
-export async function exec(statement: string, options: Options = {}): Promise<ExecaReturnValue<string>> {
+const DEFAULT_OPTIONS: ExecOptions = {
+  reject: false,
+  shouldThrowOnStderr: false,
+}
+
+export async function exec(statement: string, options: ExecOptions = {}): Promise<ExecaReturnValue<string>> {
   if (!workspace.workspaceFolders) {
     throw new InternalError('`workspace.workspaceFolders` is undefined.')
   }
@@ -20,6 +25,14 @@ export async function exec(statement: string, options: Options = {}): Promise<Ex
     cwd: workspace.workspaceFolders[0].uri.fsPath,
     ...options,
   }
+  const { shouldThrowOnStderr, ...execaOptions } = controlledOptions
 
-  return $(controlledOptions)`${statement}`
+  const [command, ...args] = statement.split(' ')
+  const execaChildProcess = await execa(command, args, execaOptions)
+
+  if (shouldThrowOnStderr && execaChildProcess.stderr.length > 0) {
+    throw new InternalError(`Command \`${statement}\` failed.`, execaChildProcess.stderr)
+  }
+
+  return execaChildProcess
 }

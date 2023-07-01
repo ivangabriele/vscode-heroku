@@ -4,7 +4,7 @@ import { window } from 'vscode'
 
 import { handleError } from '../helpers/handleError'
 
-export async function logIntoHeroku() {
+export async function logInToHerokuCli() {
   try {
     await new Promise(resolve => {
       const child = spawn('heroku', ['login'])
@@ -17,7 +17,7 @@ export async function logIntoHeroku() {
       child.stdin.end()
     })
 
-    window.showInformationMessage('You are now logged into Heroku.')
+    window.showInformationMessage('You are now logged in to Heroku CLI.')
   } catch (err) {
     handleError(err)
   }

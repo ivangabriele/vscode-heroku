@@ -2,7 +2,8 @@ import isCommand from 'is-command'
 import { commands, ExtensionContext, window, workspace } from 'vscode'
 
 import { linkWorkspaceToHerokuApp } from './commands/linkWorkspaceToHerokuApp'
-import { logIntoHeroku } from './commands/logIntoHeroku'
+import { logInToHerokuCli } from './commands/logInToHerokuCli'
+import { logOutOfHerokuCli } from './commands/logOutOfHerokuCli'
 import { ACTION } from './constants'
 import { handleError } from './helpers/handleError'
 import { isHerokuCliAuthenticated } from './helpers/isHerokuCliAuthenticated'
@@ -38,12 +39,12 @@ export async function activate(context: ExtensionContext) {
 
     if (!(await isHerokuCliAuthenticated())) {
       const action = await window.showWarningMessage(
-        "Heroku CLI doesn't seem to be authenticated. Do you want to log in?",
+        'You are not logged in to Heroku CLI. Do you want to log in?',
         ACTION.NO_HEROKU_AUTH.label,
       )
 
       if (action === ACTION.NO_HEROKU_AUTH.label) {
-        await logIntoHeroku()
+        await logInToHerokuCli()
 
         if (!(await isHerokuCliAuthenticated())) {
           return
@@ -67,10 +68,18 @@ export async function activate(context: ExtensionContext) {
       'extension.vscode-heroku.linkWorkspaceToHerokuApp',
       linkWorkspaceToHerokuApp,
     )
-    const logIntoHerokuDisposable = commands.registerCommand('extension.vscode-heroku.logIntoHeroku', logIntoHeroku)
+    const logInToHerokuCliDisposable = commands.registerCommand(
+      'extension.vscode-heroku.logInToHerokuCli',
+      logInToHerokuCli,
+    )
+    const logOutOfHerokuCliDisposable = commands.registerCommand(
+      'extension.vscode-heroku.logOutOfHerokuCli',
+      logOutOfHerokuCli,
+    )
 
     context.subscriptions.push(linkWorkspaceToHerokuAppDisposable)
-    context.subscriptions.push(logIntoHerokuDisposable)
+    context.subscriptions.push(logInToHerokuCliDisposable)
+    context.subscriptions.push(logOutOfHerokuCliDisposable)
   } catch (err) {
     handleError(err)
   }
