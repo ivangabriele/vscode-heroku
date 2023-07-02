@@ -1,4 +1,4 @@
-import { execa, ExecaReturnValue, Options } from 'execa'
+import { execa, type ExecaReturnValue, type Options } from 'execa'
 import { workspace } from 'vscode'
 
 import { InternalError } from '../libs/InternalError'
@@ -13,21 +13,23 @@ const DEFAULT_OPTIONS: ExecOptions = {
 }
 
 export async function exec(statement: string, options: ExecOptions = {}): Promise<ExecaReturnValue<string>> {
-  if (!workspace.workspaceFolders) {
-    throw new InternalError('`workspace.workspaceFolders` is undefined.')
-  }
-  if (workspace.workspaceFolders.length === 0) {
-    throw new InternalError('`workspace.workspaceFolders` is empty.')
+  const firstWorkspaceFolder = workspace.workspaceFolders?.at(0)
+  if (!firstWorkspaceFolder) {
+    throw new InternalError('`firstWorkspaceFolder` is undefined.')
   }
 
   const controlledOptions = {
     ...DEFAULT_OPTIONS,
-    cwd: workspace.workspaceFolders[0].uri.fsPath,
+    cwd: firstWorkspaceFolder.uri.fsPath,
     ...options,
   }
   const { shouldThrowOnStderr, ...execaOptions } = controlledOptions
 
   const [command, ...args] = statement.split(' ')
+  if (!command) {
+    throw new InternalError('`command` is undefined.')
+  }
+
   const execaChildProcess = await execa(command, args, execaOptions)
 
   if (shouldThrowOnStderr && execaChildProcess.stderr.length > 0) {

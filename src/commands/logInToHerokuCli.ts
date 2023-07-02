@@ -3,6 +3,7 @@ import { EOL } from 'os'
 import { window } from 'vscode'
 
 import { handleError } from '../helpers/handleError'
+import { statusBarItemManager } from '../libs/StatusBarItemManager'
 
 export async function logInToHerokuCli() {
   try {
@@ -16,6 +17,8 @@ export async function logInToHerokuCli() {
       child.stdin.write(EOL)
       child.stdin.end()
     })
+
+    statusBarItemManager.load()
 
     window.showInformationMessage('You are now logged in to Heroku CLI.')
   } catch (err) {

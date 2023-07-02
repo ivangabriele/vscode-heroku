@@ -1,26 +1,24 @@
 import { $ } from 'execa'
 import { window, workspace } from 'vscode'
 
-import { HerokuApp } from './types'
+import { type HerokuApp } from './types'
+import { exec } from '../helpers/exec'
 import { handleError } from '../helpers/handleError'
 import { showProgressNotification } from '../helpers/showProgressNotification'
+import { statusBarItemManager } from '../libs/StatusBarItemManager'
 import { UserError } from '../libs/UserError'
 
 export async function linkWorkspaceToHerokuApp() {
   try {
-    if (!workspace.workspaceFolders) {
+    const firstWorkspaceFolder = workspace.workspaceFolders?.at(0)
+    if (!firstWorkspaceFolder) {
       return
     }
 
-    const currentWorkspaceDirectoryPath = workspace.workspaceFolders[0].uri.fsPath
+    const currentWorkspaceDirectoryPath = firstWorkspaceFolder.uri.fsPath
 
     const herokuAppsNames = await showProgressNotification('Listing current Heroku apps...', async () => {
-      const { stderr, stdout: herokuAppsAsJson } = await $({
-        cwd: currentWorkspaceDirectoryPath,
-      })`heroku apps -A --json`
-      if (stderr) {
-        throw new UserError('An error happened while trying to list your currents Heroku apps.', stderr)
-      }
+      const { stdout: herokuAppsAsJson } = await exec(`heroku apps -A --json`, { shouldThrowOnStderr: true })
 
       const herokuAppsJson = JSON.parse(herokuAppsAsJson.trim()) as HerokuApp[]
 
@@ -43,6 +41,8 @@ export async function linkWorkspaceToHerokuApp() {
         )
       }
     })
+
+    statusBarItemManager.load()
 
     window.showInformationMessage(`Your current workspace is now linked to the  "${herokuAppName}" Heroku app.`)
   } catch (err) {
