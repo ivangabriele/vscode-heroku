@@ -10,21 +10,22 @@
   "main": "./build/extension.js",
   "scripts": {
     "build": "rollup -c",
+    "bundle": "rm -Rf *.vsix && vsce package",
     "clean": "rm -Rf ./build",
     "dev:install": "./scripts/dev/install_heroku_cli.sh",
     "dev:uninstall": "./scripts/dev/uninstall_heroku_cli.sh",
+    "prepare": "husky install",
     "pretest": "yarn clean && yarn build",
     "test": "yarn test:lint && yarn test:inte",
     "test:docker": "./scripts/run_tests_in_docker.sh",
     "test:e2e": "node ./build/test/runTest.js",
     "test:lint": "eslint .",
     "test:type": "tsc --noEmit",
-    "preversion": "yarn build",
-    "postversion": "git push origin HEAD && git push --tags",
-    "vscode:prepublish": "yarn clean && yarn build",
     "watch": "yarn clean && yarn build"
   },
   "devDependencies": {
+    "@commitlint/cli": "17.6.6",
+    "@ivangabriele/commitlint-config": "1.1.0",
     "@ivangabriele/eslint-config-typescript-base": "7.1.1",
     "@ivangabriele/prettier-config": "3.1.0",
     "@ivangabriele/tsconfig-node": "1.2.2",
@@ -37,6 +38,7 @@
     "@typescript-eslint/eslint-plugin": "5.60.1",
     "@typescript-eslint/parser": "5.60.1",
     "@vscode/test-electron": "2.3.3",
+    "@vscode/vsce": "2.19.0",
     "dayjs": "1.11.9",
     "eslint": "8.44.0",
     "eslint-config-airbnb": "19.0.4",
@@ -51,7 +53,9 @@
     "eslint-plugin-typescript-sort-keys": "2.3.0",
     "execa": "7.1.1",
     "glob": "10.3.1",
+    "husky": "8.0.3",
     "is-command": "2.0.2",
+    "lint-staged": "13.2.3",
     "mocha": "10.2.0",
     "moment": "2.29.4",
     "prettier": "2.8.8",
@@ -59,6 +63,14 @@
     "rollup-plugin-swc3": "0.8.2",
     "tslib": "2.6.0",
     "typescript": "5.1.6"
+  },
+  "//": "https://github.com/okonet/lint-staged/issues/825#issuecomment-674575655",
+  "lint-staged": {
+    "*.{json,md,yaml,yml}": "prettier --write",
+    "*.{ts,tsx}": [
+      "yarn eslint --ext js,jsx,ts,tsx",
+      "bash -c 'npm run test:type'"
+    ]
   },
   "packageManager": "yarn@3.6.1",
   "prettier": "@ivangabriele/prettier-config",
