@@ -1,4 +1,4 @@
-name: Merge Release Pull Request
+name: Merge Release Pull Requests
 
 on:
   pull_request:
