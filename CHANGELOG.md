@@ -1,3 +1,25 @@
+# [2.0.0](https://github.com/ivangabriele/vscode-heroku/compare/v1.4.3...v2.0.0) (2023-07-04)
+
+
+### Bug Fixes
+
+* **commands:** show login command success message once done ([fb311db](https://github.com/ivangabriele/vscode-heroku/commit/fb311dbc1ee47e76d87bd1ec005ec3dd4a65b3ee))
+* **deps:** update dependency await-to-js to v3 ([#237](https://github.com/ivangabriele/vscode-heroku/issues/237)) ([822ec3b](https://github.com/ivangabriele/vscode-heroku/commit/822ec3bd611f39c6cac74c6a016d94cef574cddf))
+
+
+* feat!: add Heroku CLI login check and command ([b4093e7](https://github.com/ivangabriele/vscode-heroku/commit/b4093e764aba57d720c23e9715e2cc6c19810829))
+
+
+### Features
+
+* add Heroku CLI logout command ([254d251](https://github.com/ivangabriele/vscode-heroku/commit/254d25181b6c4291da30ab3d27f3762c7b958e3e))
+* improve UX and states lifecycle ([f255498](https://github.com/ivangabriele/vscode-heroku/commit/f255498ad164668c57ce7e7328d527a995eb6a6c))
+
+
+### BREAKING CHANGES
+
+* Full upgrade of the entire project.
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
