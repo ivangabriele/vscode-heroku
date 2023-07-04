@@ -15,7 +15,7 @@
     "dev:install": "./scripts/dev/install_heroku_cli.sh",
     "dev:uninstall": "./scripts/dev/uninstall_heroku_cli.sh",
     "prepare": "husky install",
-    "release": "yarn semantic-release &&  && vsce publish --yarn",
+    "release": "semantic-release && vsce publish --yarn",
     "pretest": "yarn clean && yarn build",
     "test": "yarn test:lint && yarn test:inte",
     "test:docker": "./scripts/run_tests_in_docker.sh",
