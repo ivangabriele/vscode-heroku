@@ -15,6 +15,7 @@
     "dev:install": "./scripts/dev/install_heroku_cli.sh",
     "dev:uninstall": "./scripts/dev/uninstall_heroku_cli.sh",
     "prepare": "husky install",
+    "release": "yarn semantic release &&  && vsce publish --yarn",
     "pretest": "yarn clean && yarn build",
     "test": "yarn test:lint && yarn test:inte",
     "test:docker": "./scripts/run_tests_in_docker.sh",
@@ -28,6 +29,7 @@
     "@ivangabriele/commitlint-config": "1.1.0",
     "@ivangabriele/eslint-config-typescript-base": "7.1.1",
     "@ivangabriele/prettier-config": "3.1.0",
+    "@ivangabriele/semantic-release-config-no-npm": "3.0.3",
     "@ivangabriele/tsconfig-node": "1.2.2",
     "@rollup/plugin-commonjs": "25.0.2",
     "@rollup/plugin-node-resolve": "15.1.0",
@@ -61,6 +63,7 @@
     "prettier": "2.8.8",
     "rollup": "3.26.0",
     "rollup-plugin-swc3": "0.8.2",
+    "semantic-release": "21.0.6",
     "tslib": "2.6.0",
     "typescript": "5.1.6"
   },
@@ -74,6 +77,9 @@
   },
   "packageManager": "yarn@3.6.1",
   "prettier": "@ivangabriele/prettier-config",
+  "release": {
+    "extends": "@ivangabriele/semantic-release-config-no-npm"
+  },
   "displayName": "Heroku",
   "activationEvents": [
     "onStartupFinished"

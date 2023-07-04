@@ -2,7 +2,7 @@
 
 [![MIT License](https://img.shields.io/github/license/ivangabriele/vscode-heroku?style=for-the-badge)](https://github.com/ivangabriele/vscode-heroku/blob/main/LICENSE)
 [![Visual Studio Marketplace](https://img.shields.io/visual-studio-marketplace/i/ivangabriele.vscode-heroku?style=for-the-badge)](https://marketplace.visualstudio.com/items?itemName=ivangabriele.vscode-heroku)
-[![Main Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/vscode-heroku/main.yml?style=for-the-badge)](https://github.com/ivangabriele/vscode-heroku/actions?query=main)
+[![Check Workflow Status](https://img.shields.io/github/actions/workflow/status/ivangabriele/vscode-heroku/check.yml?label=Tests&style=for-the-badge)](https://github.com/ivangabriele/vscode-heroku/actions?query=check)
 
 ---
 

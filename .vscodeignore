@@ -1,16 +1,21 @@
+.github/**
 .vscode/**
 .vscode-test/**
 .yarn/**
 node_modules/**
+scripts/**
 
 .editorconfig
 .eslintrc
 .gitignore
-.travis.yml
 .yarnrc.yml
+rollup.config.mjs
 tsconfig.json
 yarn.lock
 
 build/test/**
 build/**/*.js.map
 src/**
+
+**/*.svg
+**/*.vsix
