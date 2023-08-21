@@ -57,7 +57,7 @@
     "glob": "10.3.3",
     "husky": "8.0.3",
     "is-command": "2.0.2",
-    "lint-staged": "13.2.3",
+    "lint-staged": "14.0.1",
     "mocha": "10.2.0",
     "moment": "2.29.4",
     "prettier": "2.8.8",
