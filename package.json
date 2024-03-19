@@ -25,7 +25,7 @@
     "watch": "yarn clean && yarn build"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.6",
+    "@commitlint/cli": "19.2.1",
     "@ivangabriele/commitlint-config": "1.1.0",
     "@ivangabriele/eslint-config-typescript-base": "7.1.1",
     "@ivangabriele/prettier-config": "3.1.0",
