@@ -363,26 +363,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ivangabriele/eslint-config-typescript-base@npm:7.1.1":
-  version: 7.1.1
-  resolution: "@ivangabriele/eslint-config-typescript-base@npm:7.1.1"
+"@ivangabriele/eslint-config-typescript-base@npm:10.0.0":
+  version: 10.0.0
+  resolution: "@ivangabriele/eslint-config-typescript-base@npm:10.0.0"
   peerDependencies:
-    "@ivangabriele/prettier-config": ^3.0.0
-    "@typescript-eslint/eslint-plugin": ^5.0.0
-    "@typescript-eslint/parser": ^5.0.0
-    eslint: ^8.0.0
-    eslint-config-airbnb: ^19.0.0
-    eslint-config-airbnb-typescript: ^17.0.0
-    eslint-config-prettier: ^8.0.0
-    eslint-plugin-import: ^2.0.0
-    eslint-plugin-jest: ^27.0.0
-    eslint-plugin-no-null: ^1.0.0
-    eslint-plugin-prettier: ^4.0.0
-    eslint-plugin-sort-destructure-keys: ^1.0.0
-    eslint-plugin-sort-keys-fix: ^1.0.0
-    eslint-plugin-typescript-sort-keys: ^2.0.0
-    typescript: ^5.0.0
-  checksum: d99e2d96054ed8a0c10a9df2427b015f4b6a86bcd925a0ad6d5c8bfd86fccfbdd4330a37456ba883997366172e2b650e979df353c92814b85a9e18405f49fbe2
+    "@ivangabriele/prettier-config": ^5.0.0
+    "@typescript-eslint/eslint-plugin": ^6
+    "@typescript-eslint/parser": ^6
+    eslint: ^8
+    eslint-config-airbnb: ^19
+    eslint-config-airbnb-typescript: ^17
+    eslint-config-prettier: ^9
+    eslint-plugin-import: ^2
+    eslint-plugin-jest: ^27
+    eslint-plugin-no-null: ^1
+    eslint-plugin-prettier: ^5
+    eslint-plugin-sort-destructure-keys: ^1
+    eslint-plugin-sort-keys-fix: ^1
+    eslint-plugin-typescript-sort-keys: ^3
+    typescript: ^5
+  checksum: bcd6c732074c27ef25f9efee98f96d889727300b62d54802fb15dfa6f83a7be425aed53fdf968fc5d7fbaa992187b30c5c84a0dca10e16f447d05e09b20e4e0a
   languageName: node
   linkType: hard
 
@@ -9890,7 +9890,7 @@ __metadata:
   dependencies:
     "@commitlint/cli": 17.6.6
     "@ivangabriele/commitlint-config": 1.1.0
-    "@ivangabriele/eslint-config-typescript-base": 7.1.1
+    "@ivangabriele/eslint-config-typescript-base": 10.0.0
     "@ivangabriele/prettier-config": 3.1.0
     "@ivangabriele/semantic-release-config-no-npm": 3.0.3
     "@ivangabriele/tsconfig-node": 1.2.2
